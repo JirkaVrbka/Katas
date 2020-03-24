@@ -17,7 +17,7 @@ namespace Tennis
         {
             if (playerName == player1Name)
                 m_score1 += 1;
-            else
+            if (playerName == player2Name)
                 m_score2 += 1;
         }
 
@@ -30,21 +30,17 @@ namespace Tennis
                 switch (m_score1)
                 {
                     case 0:
-                        score = "Love-All";
-                        break;
                     case 1:
-                        score = "Fifteen-All";
-                        break;
                     case 2:
-                        score = "Thirty-All";
+                        score = $"{ScoreToString(m_score1)}-All";
                         break;
                     default:
                         score = "Deuce";
                         break;
-
                 }
             }
-            else if (m_score1 >= 4 || m_score2 >= 4)
+            else
+            if (m_score1 >= 4 || m_score2 >= 4)
             {
                 var minusResult = m_score1 - m_score2;
                 if (minusResult == 1) score = "Advantage player1";
@@ -58,24 +54,27 @@ namespace Tennis
                 {
                     if (i == 1) tempScore = m_score1;
                     else { score += "-"; tempScore = m_score2; }
-                    switch (tempScore)
-                    {
-                        case 0:
-                            score += "Love";
-                            break;
-                        case 1:
-                            score += "Fifteen";
-                            break;
-                        case 2:
-                            score += "Thirty";
-                            break;
-                        case 3:
-                            score += "Forty";
-                            break;
-                    }
+
+                    score += ScoreToString(tempScore);
                 }
             }
             return score;
+        }
+
+        private string ScoreToString(int scoreNum)
+        {
+            switch (scoreNum)
+            {
+                case 0:
+                    return "Love";
+                case 1:
+                    return "Fifteen";
+                case 2:
+                    return "Thirty";
+                default:
+                    return "Forty";
+
+            }
         }
     }
 }
