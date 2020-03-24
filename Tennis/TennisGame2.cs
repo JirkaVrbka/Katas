@@ -20,36 +20,32 @@ namespace Tennis
         public string GetScore()
         {
             var score = "";
+            
+            p1res = ScoreToString(p1point);
+            p2res = ScoreToString(p2point);
+            
             if (p1point == p2point && p1point < 3)
             {
-                score += $"{ScoreToString(p1point)}-All";
+                score += $"{p1res}-All";
             }
             if (p1point == p2point && p1point > 2)
                 score = "Deuce";
 
             if (p1point > 0 && p2point == 0)
             {
-                p2res = "Love";
-                p1res = ScoreToString(p1point);
                 score = $"{p1res}-{p2res}";
             }
             if (p2point > 0 && p1point == 0)
             {
-                p1res = "Love";
-                p2res = ScoreToString(p2point);
                 score = $"{p1res}-{p2res}";
             }
 
             if (p1point > p2point && p1point < 4)
             {
-                p1res = ScoreToString(p1point);
-                p2res = ScoreToString(p2point);
                 score = p1res + "-" + p2res;
             }
             if (p2point > p1point && p2point < 4)
             {
-                p1res = ScoreToString(p1point);
-                p2res = ScoreToString(p2point);
                 score = p1res + "-" + p2res;
             }
 
