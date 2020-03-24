@@ -9,8 +9,8 @@ namespace Tennis
 
         public TennisGame1(string player1Name, string player2Name)
         {
-            this._player1Name = player1Name;
-            this._player2Name = player2Name;
+            _player1Name = player1Name;
+            _player2Name = player2Name;
         }
 
         public void WonPoint(string playerName)
