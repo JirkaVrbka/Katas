@@ -23,24 +23,25 @@ namespace Tennis
 
         public string GetScore()
         {
-            string score = "";
-            var tempScore = 0;
             if (_player1Score == _player2Score)
                 return GetScoreWhenEqual();
-            
+
             if (_player1Score >= 4 || _player2Score >= 4)
-            {
-                var minusResult = _player1Score - _player2Score;
-                if (minusResult == 1) 
-                    return "Advantage player1";
-                if (minusResult == -1) 
-                    return "Advantage player2";
-                if (minusResult >= 2) 
-                    return "Win for player1";
-                return "Win for player2";
-            }
+                return GetScoreWhenOverFour();
                 
             return $"{ScoreToString(_player1Score)}-{ScoreToString(_player2Score)}";
+        }
+
+        private string GetScoreWhenOverFour()
+        {
+            var minusResult = _player1Score - _player2Score;
+            if (minusResult == 1) 
+                return "Advantage player1";
+            if (minusResult == -1) 
+                return "Advantage player2";
+            if (minusResult >= 2) 
+                return "Win for player1";
+            return "Win for player2";
         }
 
         private string GetScoreWhenEqual()
