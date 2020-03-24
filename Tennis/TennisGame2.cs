@@ -7,17 +7,13 @@ namespace Tennis
 {
     public class TennisGame2 : ITennisGame
     {
-        private int p1point;
-        private int p2point;
+        private int _p1Point;
+        private int _p2Point;
 
-        private string p1res = "";
-        private string p2res = "";
+        private readonly string _player1Name;
+        private readonly string _player2Name;
 
-        private string player1Name;
-
-        private string player2Name;
-
-        private List<Tuple<Func<int, int, bool>, Func<int, int, string>>> judge =
+        private readonly List<Tuple<Func<int, int, bool>, Func<int, int, string>>> _judge =
             new List<Tuple<Func<int, int, bool>, Func<int, int, string>>>
             {
                 new Tuple<Func<int, int, bool>, Func<int, int, string>>
@@ -45,14 +41,13 @@ namespace Tennis
 
         public TennisGame2(string player1Name, string player2Name)
         {
-            this.player1Name = player1Name;
-            p1point = 0;
-            this.player2Name = player2Name;
+            this._player1Name = player1Name;
+            this._player2Name = player2Name;
         }
 
         public string GetScore()
         {
-            return judge.First(j => j.Item1.Invoke(p1point, p2point)).Item2.Invoke(p1point, p2point);
+            return _judge.First(j => j.Item1.Invoke(_p1Point, _p2Point)).Item2.Invoke(_p1Point, _p2Point);
         }
         
         private static string ScoreToString(int scoreNum)
@@ -72,10 +67,10 @@ namespace Tennis
 
         public void WonPoint(string player)
         {
-            if (player == player1Name)
-                p1point++;
-            if (player == player2Name)
-                p2point++;
+            if (player == _player1Name)
+                _p1Point++;
+            if (player == _player2Name)
+                _p2Point++;
         }
 
     }
