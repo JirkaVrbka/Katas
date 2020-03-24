@@ -27,17 +27,7 @@ namespace Tennis
             var tempScore = 0;
             if (_player1Score == _player2Score)
             {
-                switch (_player1Score)
-                {
-                    case 0:
-                    case 1:
-                    case 2:
-                        score = $"{ScoreToString(_player1Score)}-All";
-                        break;
-                    default:
-                        score = "Deuce";
-                        break;
-                }
+                return GetScoreWhenEqual();
             }
             else
             if (_player1Score >= 4 || _player2Score >= 4)
@@ -59,6 +49,19 @@ namespace Tennis
                 }
             }
             return score;
+        }
+
+        private string GetScoreWhenEqual()
+        {
+            switch (_player1Score)
+            {
+                case 0:
+                case 1:
+                case 2:
+                    return $"{ScoreToString(_player1Score)}-All";
+                default:
+                    return "Deuce";
+            }
         }
 
         private string ScoreToString(int scoreNum)
