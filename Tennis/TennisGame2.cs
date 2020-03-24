@@ -31,20 +31,10 @@ namespace Tennis
             if (p1point == p2point && p1point > 2)
                 score = "Deuce";
 
-            if (p1point > 0 && p2point == 0)
-            {
-                score = $"{p1res}-{p2res}";
-            }
-            if (p2point > 0 && p1point == 0)
-            {
-                score = $"{p1res}-{p2res}";
-            }
-
-            if (p1point > p2point && p1point < 4)
-            {
-                score = $"{p1res}-{p2res}";
-            }
-            if (p2point > p1point && p2point < 4)
+            if (p1point > 0 && p2point == 0
+            || p2point > 0 && p1point == 0
+            || p1point > p2point && p1point < 4
+            || p2point > p1point && p2point < 4)
             {
                 score = $"{p1res}-{p2res}";
             }
