@@ -40,13 +40,7 @@ namespace Tennis
             }
             else
             {
-                for (var i = 1; i < 3; i++)
-                {
-                    if (i == 1) tempScore = _player1Score;
-                    else { score += "-"; tempScore = _player2Score; }
-
-                    score += ScoreToString(tempScore);
-                }
+                return $"{ScoreToString(_player1Score)}-{ScoreToString(_player2Score)}";
             }
             return score;
         }
@@ -76,7 +70,6 @@ namespace Tennis
                     return "Thirty";
                 default:
                     return "Forty";
-
             }
         }
     }
