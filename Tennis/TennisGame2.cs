@@ -26,7 +26,7 @@ namespace Tennis
             
             if (p1point == p2point && p1point < 3)
             {
-                score += $"{p1res}-All";
+                score = $"{p1res}-All";
             }
             if (p1point == p2point && p1point > 2)
                 score = "Deuce";
@@ -42,11 +42,11 @@ namespace Tennis
 
             if (p1point > p2point && p1point < 4)
             {
-                score = p1res + "-" + p2res;
+                score = $"{p1res}-{p2res}";
             }
             if (p2point > p1point && p2point < 4)
             {
-                score = p1res + "-" + p2res;
+                score = $"{p1res}-{p2res}";
             }
 
             if (p1point > p2point && p2point >= 3)
