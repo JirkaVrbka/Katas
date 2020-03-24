@@ -104,22 +104,12 @@ namespace Tennis
             return score;
         }
 
-        private void P1Score()
-        {
-            p1point++;
-        }
-
-        private void P2Score()
-        {
-            p2point++;
-        }
-
         public void WonPoint(string player)
         {
-            if (player == "player1")
-                P1Score();
-            else
-                P2Score();
+            if (player == player1Name)
+                p1point++;
+            if (player == player2Name)
+                p2point++;
         }
 
     }
